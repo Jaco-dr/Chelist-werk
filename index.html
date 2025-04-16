@@ -7,118 +7,112 @@
   <style>
     body {
       font-family: sans-serif;
-      background: #f7f7f7;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      margin: 2rem;
+      background: #f9f9f9;
     }
-    h1 {
-      text-align: center;
+    h1, h2 {
+      color: #2c3e50;
     }
-    section {
-      background: white;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    h2 {
-      margin-top: 0;
+    .section {
+      margin-bottom: 2rem;
     }
     label {
       display: block;
-      margin: 0.5rem 0;
+      margin: 0.3rem 0;
     }
     button {
       margin-top: 1rem;
       padding: 0.5rem 1rem;
-      font-size: 1rem;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 0.3rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
     }
   </style>
 </head>
 <body>
   <h1>Checklist Werktekeningen</h1>
 
-  <form id="checklistForm">
-    <section>
-      <h2>Configurator</h2>
-      <label><input type="checkbox" name="configurator_akkoord"> 'Klant akkoord' aanklikken</label>
-      <label><input type="checkbox" name="configurator_productie"> 'In productie' aanklikken</label>
-    </section>
+  <div class="section">
+    <h2>Configurator</h2>
+    <label><input type="checkbox"> 'Klant akkoord' aanklikken</label>
+    <label><input type="checkbox"> 'In productie' aanklikken</label>
+  </div>
 
-    <section>
-      <h2>3D Model</h2>
-      <label><input type="checkbox"> Interference detection</label>
-      <label><input type="checkbox"> Liggers lijnen uit (bij meerdere deuren)</label>
-      <label><input type="checkbox"> Montagegaten lijnen uit</label>
-      <label><input type="checkbox"> Plaatlaserdelen hebben gaatjes voor poedercoaten</label>
-    </section>
+  <div class="section">
+    <h2>3D model</h2>
+    <label><input type="checkbox"> Interference detection</label>
+    <label><input type="checkbox"> Liggers lijnen uit (bij meerdere deuren)</label>
+    <label><input type="checkbox"> Montagegaten lijnen uit</label>
+    <label><input type="checkbox"> Plaatlaserdelen hebben gaatjes voor poedercoaten</label>
+  </div>
 
-    <section>
-      <h2>2D-tekening</h2>
-      <label><input type="checkbox"> Onderhoek komt overeen met Syntri en klanttekening</label>
-      <label><input type="checkbox"> Handgreep-tekst komt overeen met 3D-model</label>
-      <label><input type="checkbox"> Plaatlaserdelen in werktekening</label>
-      <label><input type="checkbox"> Alle benodigde maatvoering is aanwezig</label>
-      <label><input type="checkbox"> Vakmaat dimensies op 1 decimaal</label>
-      <label><input type="checkbox"> Glastekst staat correct in de deur (incl. glasdikte en kleur)</label>
-      <label><input type="checkbox"> Overige opmerkingen ook in werktekening</label>
-    </section>
+  <div class="section">
+    <h2>2D-tekening</h2>
+    <label><input type="checkbox"> Onderhoek komt overeen met Syntri en klanttekening</label>
+    <label><input type="checkbox"> Handgreep-tekst komt overeen met 3D-model</label>
+    <label><input type="checkbox"> Plaatlaserdelen in werktekening</label>
+    <label><input type="checkbox"> Alle benodigde maatvoering is aanwezig</label>
+    <label><input type="checkbox"> Vakmaat dimensies op 1 decimaal</label>
+    <label><input type="checkbox"> Glastekst staat correct in de deur</label>
+    <label><input type="checkbox"> Overige opmerkingen ook in werktekening</label>
+  </div>
 
-    <section>
-      <h2>Speciale exports</h2>
-      <label><input type="checkbox"> Plaatlaser delen opslaan als .dxf in plaatlasermap</label>
-      <label><input type="checkbox"> Buislaser delen opslaan als .STEP in buislasermap</label>
-      <label><input type="checkbox"> Maatwerk glas opslaan als .dxf in de werktekeningen map</label>
-    </section>
+  <div class="section">
+    <h2>Speciale exports</h2>
+    <label><input type="checkbox"> Plaatlaser delen als .dxf in map</label>
+    <label><input type="checkbox"> Buislaser delen als .STEP in map</label>
+    <label><input type="checkbox"> Maatwerk glas als .dxf in werktekeningen map</label>
+  </div>
 
-    <section>
-      <h2>Glaslijst en zaaglijst</h2>
-      <label><input type="checkbox"> Glaslijst is compleet ingevuld en gecontroleerd op juistheid</label>
-      <label><input type="checkbox"> Zaaglijst is compleet ingevuld en gecontroleerd op juistheid</label>
-      <label><input type="checkbox"> Ook andere strippen dan glaslijst</label>
-    </section>
+  <div class="section">
+    <h2>Glaslijst en zaaglijst</h2>
+    <label><input type="checkbox"> Glaslijst compleet en gecontroleerd</label>
+    <label><input type="checkbox"> Zaaglijst compleet en gecontroleerd</label>
+    <label><input type="checkbox"> Ook andere strippen dan glaslijst</label>
+  </div>
 
-    <section>
-      <h2>Documentatie</h2>
-      <label><input type="checkbox"> Werktekening is in Syntri geüpload onder het juiste ordernummer</label>
-      <label><input type="checkbox"> Inlezen Driveworks aangeklikt</label>
-      <label><input type="checkbox"> Overbodige/oude info in Syntri verplaatst naar "Archief"</label>
-      <label><input type="checkbox"> Gecontroleerd of pdf vanuit Syntri de meest recente is</label>
-      <label><input type="checkbox"> Order staat in Syntri op "Werktekening gereed"</label>
-      <label><input type="checkbox"> Werktekening en zaaglijst zijn uitgeprint en in het bakje bij Theo gelegd</label>
-    </section>
+  <div class="section">
+    <h2>Documentatie</h2>
+    <label><input type="checkbox"> Werktekening geüpload in Syntri</label>
+    <label><input type="checkbox"> Inlezen Driveworks aangeklikt</label>
+    <label><input type="checkbox"> Oude info verplaatst naar archief</label>
+    <label><input type="checkbox"> Gecontroleerd of pdf de laatste is</label>
+    <label><input type="checkbox"> Order in Syntri op 'Werktekening gereed'</label>
+    <label><input type="checkbox"> Geprint en bij Theo gelegd</label>
+  </div>
 
-    <button type="button" onclick="saveChecklist()">✔️ Opslaan</button>
-    <button type="button" onclick="clearChecklist()">❌ Alles leegmaken</button>
-  </form>
+  <button onclick="downloadPDF()">Download als PDF</button>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    const form = document.getElementById('checklistForm');
+    async function downloadPDF() {
+      const {{ jsPDF }} = window.jspdf;
+      const doc = new jsPDF();
+      let y = 10;
+      doc.setFontSize(14);
+      doc.text("Checklist Werktekeningen", 10, y);
+      y += 10;
 
-    // Laden van eerder opgeslagen status
-    window.onload = () => {
-      const saved = JSON.parse(localStorage.getItem('checklistData'));
-      if (saved) {
-        [...form.elements].forEach((el, i) => {
-          if (el.type === 'checkbox') {
-            el.checked = saved[i];
-          }
+      document.querySelectorAll('.section').forEach(section => {
+        doc.setFontSize(12);
+        doc.text(section.querySelector('h2').textContent, 10, y);
+        y += 7;
+
+        section.querySelectorAll('label').forEach(label => {
+          const checkbox = label.querySelector('input');
+          const text = checkbox.checked ? '[x] ' : '[ ] ';
+          doc.text(text + label.textContent.trim(), 12, y);
+          y += 6;
         });
-      }
-    };
-
-    function saveChecklist() {
-      const state = [...form.elements].map(el => el.type === 'checkbox' ? el.checked : null);
-      localStorage.setItem('checklistData', JSON.stringify(state));
-      alert('Checklist opgeslagen!');
-    }
-
-    function clearChecklist() {
-      [...form.elements].forEach(el => {
-        if (el.type === 'checkbox') el.checked = false;
+        y += 4;
       });
-      localStorage.removeItem('checklistData');
+
+      doc.save('checklist_werktekeningen.pdf');
     }
   </script>
 </body>
