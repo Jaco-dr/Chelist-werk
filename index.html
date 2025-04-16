@@ -32,66 +32,77 @@
     button:hover {
       background: #2980b9;
     }
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 <body>
   <h1>Checklist Werktekeningen</h1>
 
-  <div class="section">
-    <h2>Configurator</h2>
-    <label><input type="checkbox"> 'Klant akkoord' aanklikken</label>
-    <label><input type="checkbox"> 'In productie' aanklikken</label>
+  <div id="checklist">
+    <div class="section">
+      <h2>Configurator</h2>
+      <label><input type="checkbox"> 'Klant akkoord' aanklikken</label>
+      <label><input type="checkbox"> 'In productie' aanklikken</label>
+    </div>
+
+    <div class="section">
+      <h2>3D model</h2>
+      <label><input type="checkbox"> Interference detection</label>
+      <label><input type="checkbox"> Liggers lijnen uit (bij meerdere deuren)</label>
+      <label><input type="checkbox"> Montagegaten lijnen uit</label>
+      <label><input type="checkbox"> Plaatlaserdelen hebben gaatjes voor poedercoaten</label>
+    </div>
+
+    <div class="section">
+      <h2>2D-tekening</h2>
+      <label><input type="checkbox"> Onderhoek komt overeen met Syntri en klanttekening</label>
+      <label><input type="checkbox"> Handgreep-tekst komt overeen met 3D-model</label>
+      <label><input type="checkbox"> Plaatlaserdelen in werktekening</label>
+      <label><input type="checkbox"> Alle benodigde maatvoering is aanwezig</label>
+      <label><input type="checkbox"> Vakmaat dimensies op 1 decimaal</label>
+      <label><input type="checkbox"> Glastekst staat correct in de deur</label>
+      <label><input type="checkbox"> Overige opmerkingen ook in werktekening</label>
+    </div>
+
+    <div class="section">
+      <h2>Speciale exports</h2>
+      <label><input type="checkbox"> Plaatlaser delen als .dxf in map</label>
+      <label><input type="checkbox"> Buislaser delen als .STEP in map</label>
+      <label><input type="checkbox"> Maatwerk glas als .dxf in werktekeningen map</label>
+    </div>
+
+    <div class="section">
+      <h2>Glaslijst en zaaglijst</h2>
+      <label><input type="checkbox"> Glaslijst compleet en gecontroleerd</label>
+      <label><input type="checkbox"> Zaaglijst compleet en gecontroleerd</label>
+      <label><input type="checkbox"> Ook andere strippen dan glaslijst</label>
+    </div>
+
+    <div class="section">
+      <h2>Documentatie</h2>
+      <label><input type="checkbox"> Werktekening geüpload in Syntri</label>
+      <label><input type="checkbox"> Inlezen Driveworks aangeklikt</label>
+      <label><input type="checkbox"> Oude info verplaatst naar archief</label>
+      <label><input type="checkbox"> Gecontroleerd of pdf de laatste is</label>
+      <label><input type="checkbox"> Order in Syntri op 'Werktekening gereed'</label>
+      <label><input type="checkbox"> Geprint en bij Theo gelegd</label>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>3D model</h2>
-    <label><input type="checkbox"> Interference detection</label>
-    <label><input type="checkbox"> Liggers lijnen uit (bij meerdere deuren)</label>
-    <label><input type="checkbox"> Montagegaten lijnen uit</label>
-    <label><input type="checkbox"> Plaatlaserdelen hebben gaatjes voor poedercoaten</label>
+  <div class="button-group">
+    <button onclick="downloadPDF()">Download als PDF</button>
+    <button onclick="resetChecklist()">Reset checklist</button>
   </div>
-
-  <div class="section">
-    <h2>2D-tekening</h2>
-    <label><input type="checkbox"> Onderhoek komt overeen met Syntri en klanttekening</label>
-    <label><input type="checkbox"> Handgreep-tekst komt overeen met 3D-model</label>
-    <label><input type="checkbox"> Plaatlaserdelen in werktekening</label>
-    <label><input type="checkbox"> Alle benodigde maatvoering is aanwezig</label>
-    <label><input type="checkbox"> Vakmaat dimensies op 1 decimaal</label>
-    <label><input type="checkbox"> Glastekst staat correct in de deur</label>
-    <label><input type="checkbox"> Overige opmerkingen ook in werktekening</label>
-  </div>
-
-  <div class="section">
-    <h2>Speciale exports</h2>
-    <label><input type="checkbox"> Plaatlaser delen als .dxf in map</label>
-    <label><input type="checkbox"> Buislaser delen als .STEP in map</label>
-    <label><input type="checkbox"> Maatwerk glas als .dxf in werktekeningen map</label>
-  </div>
-
-  <div class="section">
-    <h2>Glaslijst en zaaglijst</h2>
-    <label><input type="checkbox"> Glaslijst compleet en gecontroleerd</label>
-    <label><input type="checkbox"> Zaaglijst compleet en gecontroleerd</label>
-    <label><input type="checkbox"> Ook andere strippen dan glaslijst</label>
-  </div>
-
-  <div class="section">
-    <h2>Documentatie</h2>
-    <label><input type="checkbox"> Werktekening geüpload in Syntri</label>
-    <label><input type="checkbox"> Inlezen Driveworks aangeklikt</label>
-    <label><input type="checkbox"> Oude info verplaatst naar archief</label>
-    <label><input type="checkbox"> Gecontroleerd of pdf de laatste is</label>
-    <label><input type="checkbox"> Order in Syntri op 'Werktekening gereed'</label>
-    <label><input type="checkbox"> Geprint en bij Theo gelegd</label>
-  </div>
-
-  <button onclick="downloadPDF()">Download als PDF</button>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script>
-    async function downloadPDF() {
-      const {{ jsPDF }} = window.jspdf;
+    window.jsPDF = window.jspdf.jsPDF;
+
+    function downloadPDF() {
       const doc = new jsPDF();
       let y = 10;
       doc.setFontSize(14);
@@ -100,7 +111,8 @@
 
       document.querySelectorAll('.section').forEach(section => {
         doc.setFontSize(12);
-        doc.text(section.querySelector('h2').textContent, 10, y);
+        const title = section.querySelector('h2').textContent;
+        doc.text(title, 10, y);
         y += 7;
 
         section.querySelectorAll('label').forEach(label => {
@@ -113,6 +125,10 @@
       });
 
       doc.save('checklist_werktekeningen.pdf');
+    }
+
+    function resetChecklist() {
+      document.querySelectorAll('input[type="checkbox"]').forEach(box => box.checked = false);
     }
   </script>
 </body>
