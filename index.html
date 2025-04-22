@@ -177,5 +177,12 @@ function downloadPDF() {
       document.getElementById('klant').value = '';
     }
   </script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log("✅ Service worker geregistreerd"))
+      .catch(err => console.log("❌ Service worker faalde:", err));
+  }
+</script>
+
 </body>
 </html>
